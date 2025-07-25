@@ -1,23 +1,33 @@
 #pragma once
 #include <iostream>
 
-extern "C" {
-    __declspec(dllexport) int Add(int a, int b);
-    __declspec(dllexport) int Sub(int a, int b);
-    // C 风格的类包装函数
-    __declspec(dllexport) void* CreateDllClass();
-    __declspec(dllexport) void DestroyDllClass(void* instance);
-    __declspec(dllexport) int Times(void* instance, int a, int b);
+#ifdef EXPORTING_TEST_MODULE
+#define TEST_API __declspec(dllexport)
+#else
+#define TEST_API __declspec(dllimport)
+#endif
 
-    struct DivideResult {
-        int value;
-        bool hasError;
-        char errorMessage[256];
-    };
-    __declspec(dllexport) DivideResult Divide(void* instance, int a, int b);
-}
-class __declspec(dllexport) DllClass {
-public:
-	int Times(int a, int b);
-    int Divide(int a, int b);
+
+struct TEST_API DivideResult {
+    int value;
+    bool hasError;
+    char errorMessage[256];
 };
+
+extern "C" {
+    TEST_API int Add(int a, int b);
+    TEST_API int Sub(int a, int b);
+    // C 风格的类包装函数
+
+    class TEST_API DllClass {
+    public:
+        int Times(int a, int b);
+        int Divide(int a, int b);
+    };
+
+    TEST_API void* CreateDllClass();
+    TEST_API void DestroyDllClass(void* instance);
+
+    TEST_API int Times(void* instance, int a, int b);
+    TEST_API DivideResult Divide(void* instance, int a, int b);
+}
