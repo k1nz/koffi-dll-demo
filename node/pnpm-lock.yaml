@@ -1,0 +1,22 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      koffi:
+        specifier: ^2.12.2
+        version: 2.12.2
+
+packages:
+
+  koffi@2.12.2:
+    resolution: {integrity: sha512-OlHr5pjRfzauBYHxj/yPgw8AEaSzGxzOmkSKks38mc3j5OcK1TJ3VAGgt0qAw1j1Y0rLnXZRsoG79vTELNbj1A==}
+
+snapshots:
+
+  koffi@2.12.2: {}
