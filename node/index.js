@@ -20,13 +20,19 @@ const divide = lib.func("Divide", DivideResult, ["void*", "int", "int"]);
 
 const dllInstance = createDllInstance();
 
+const showMessageBox = lib.func("void MessageBoxTest(void*)");
+
+const hwndBuffer = Buffer.from(new Uint8Array([174, 12, 8, 0, 0, 0, 0, 0]));
+showMessageBox(hwndBuffer);
+
 // const divide = lib.func('int DllClass::Divide(int a, int b)')
 
 // console.log(add(1, 2))
 // console.log(sub(1, 2))
+
 console.log(times(dllInstance, 1, 2));
 try {
-  console.log(divide(dllInstance, 1,9));
+  console.log(divide(dllInstance, 4, 2));
 } catch (err) {
   console.error(err);
 }

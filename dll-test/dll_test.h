@@ -30,4 +30,6 @@ extern "C" {
 
     TEST_API int Times(void* instance, int a, int b);
     TEST_API DivideResult Divide(void* instance, int a, int b);
+
+    TEST_API void MessageBoxTest(HWND hwnd);
 }

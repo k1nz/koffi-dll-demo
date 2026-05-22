@@ -45,4 +45,7 @@ extern "C" {
         };
         return result;
     }
+    void MessageBoxTest(HWND hwnd) {
+        MessageBox(hwnd, TEXT("HELLO"), TEXT("In a DLL"), MB_OK);
+    }
 }
